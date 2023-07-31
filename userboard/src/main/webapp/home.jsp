@@ -156,10 +156,24 @@
 	<!-- Latest compiled JavaScript -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 	<style>
-		table, td {text-align:center; table-layout: fixed;}
-		.white {color:#FFFFFF; text-decoration: none;}
-		.deco {color:#000000;}
-		.black {color:#000000; text-decoration: none;}
+		table, td {
+			text-align:center;
+			table-layout: fixed;
+		}
+		.white {
+			color:#FFFFFF;
+			text-decoration: none;
+		}
+		.deco {
+			color:#000000;
+			}
+		.black {
+			color:#000000;
+			text-decoration: none;
+			}
+		.right {
+		  float: right;
+		}
 	</style>
 </head>
 <body>
@@ -167,27 +181,24 @@
 		// request.getRequestDispatcher("/inc/mainmenu.jsp").include(request, response);
 		// 이코드 액션태그로 변경하면 아래와 같다
 	%>
-<!-- 헤드 -->
-	<div class="p-5 bg-primary text-center">
-		<h4 class="white">User Board</h4>
-	</div>
-<!-- 메인메뉴(가로) -->
+<!-- 네비게이션 바 -->
 	<div>
 		<jsp:include page="/inc/mainmenu.jsp"></jsp:include>
 	</div>
-	<br>
+	
 <!--[시작] subMenuList 모델 출력 서브메뉴(세로) --------------------------------------------->
 
+<div class="p-5 bg-light">
 <div class="row">
 	
 		<%
 			if(session.getAttribute("loginMemberId") != null){
 		%>
-			<h5 class="mt-3">&nbsp;&nbsp;카테고리&nbsp;&nbsp;<a class="white" href="<%=request.getContextPath()%>/category/categoryOne.jsp"><button class="btn btn-primary">관리</button></a></h5>
+			<h5>&nbsp;&nbsp;카테고리&nbsp;&nbsp;<a href="<%=request.getContextPath()%>/category/categoryOne.jsp"><button class="btn btn-outline-warning">관리</button></a></h5>
 		<%		
 			} else {
 		%>
-			<h5 class="mt-3">&nbsp;&nbsp;카테고리</h5>
+			<h5>&nbsp;&nbsp;카테고리</h5>
 		<%		
 			}
 		%>
@@ -196,11 +207,11 @@
 			<%
 				for(HashMap<String, Object> m : subMenuList) {
 			%>
-					<li class="nav-item">
-						<a class="nav-link" href="<%=request.getContextPath()%>/home.jsp?localName=<%=(String)m.get("localName")%>">
-							<%=(String)m.get("localName")%>(<%=(Integer)m.get("cnt")%>)
-						</a><!-- hashMap은 변수 호출할 때 get으로. -->
-					</li>
+				<li class="nav-item">
+					<a class="nav-link" href="<%=request.getContextPath()%>/home.jsp?localName=<%=(String)m.get("localName")%>">
+						<%=(String)m.get("localName")%>(<%=(Integer)m.get("cnt")%>)
+					</a><!-- hashMap은 변수 호출할 때 get으로. -->
+				</li>
 			<%		
 				}
 			%>
@@ -220,8 +231,16 @@
 				}
 			%>		
 		</div>
+			<!-- 로그인 했다면 게시글 추가 버튼 보이도록 -->
+			<%
+				if(session.getAttribute("loginMemberId")!=null){
+			%>
+				<a href="<%=request.getContextPath()%>/board/addBoard.jsp"><button class="right btn btn-outline-warning">게시글 추가</button></a>
+			<%
+				}
+			%>
 		<table class="table table-bordered">
-			<tr class="text-bg-primary">
+			<tr class="table-warning">
 				<th>localName</th>
 				<th>boardTitle</th>
 				<th>createdate</th>
@@ -235,7 +254,17 @@
 						</c:foreach>
 			 -->
 			
-			<% //Board 클래스의 객체 b를 one만큼 반복.
+			<% 
+				if (boardList.isEmpty()) {
+			%>
+				<tr>
+					<td colspan="3">
+						<h5>게시글이 없습니다.</h5>
+					</td>
+				</tr>
+			<%		
+				}
+				//Board 클래스의 객체 b를 one만큼 반복.
 				for(Board b : boardList){
 			%>
 			<tr>
@@ -249,20 +278,7 @@
 			</tr>
 			<%
 				}
-			%>
-				<!-- 로그인 했다면 게시글 추가 버튼 보이도록 -->
-			<%
-				if(session.getAttribute("loginMemberId")!=null){
-			%>
-				<tr>
-					<td colspan="3">
-						<a class="black" href="<%=request.getContextPath()%>/board/addBoard.jsp"><button type="button" class="btn btn-primary">게시물 추가</button></a>
-					</td>
-				</tr>
-			<%
-				}
-			%>
-			
+			%>			
 			<tr>
 				<td colspan = "3">
 				<%
@@ -305,7 +321,7 @@
 							<td><input type="password" name="memberPw" class="form-control"></td>
 						</tr>
 						<tr>
-							<td colspan="2"><button type="submit" class="btn btn-outline-secondary">로그인</button></td>
+							<td colspan="2"><button type="submit" class="btn btn-outline-warning">로그인</button></td>
 						</tr>
 					</table>
 				</form>
@@ -328,13 +344,13 @@
 				}
 			%>
 			</div>
-</div>		
-	
-	
+	</div>
+</div>	
+
 <!--[끝] boardList-------------------------------------------------------------- -->		
-	<div>
-		<!-- include 페이지 : Copyright &copy; 구디아카데미 -->
+	<div class="bg-light"><!-- include 페이지 : Copyright &copy; 구디아카데미 -->
 		<jsp:include page="/inc/copyright.jsp"></jsp:include>
 	</div>
+
 </body>
 </html>

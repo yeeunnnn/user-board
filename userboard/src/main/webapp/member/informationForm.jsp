@@ -57,48 +57,50 @@
 	<!-- Latest compiled JavaScript -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 	<style>
-		table, td {text-align:center; table-layout: fixed;}
+		table, td {
+			text-align:center;
+			table-layout: fixed;
+		}
 	</style>
 </head>
 <body>
-	<!-- 헤드 -->
-	<div class="p-5 bg-primary text-center"></div>
 	<!-- 상단 메뉴바 -->
 	<div>
 		<jsp:include page="/inc/mainmenu.jsp"></jsp:include>
 	</div>
+	<div class="bg-light">
+		<div class="container">
+			<table class="table table-bordered">
+				<tr>
+					<th colspan="2">회원정보 확인</th>
+				</tr>
+				<tr class="center"><!-- 오류 메세지 -->
+					<%
+						if(request.getParameter("msg")!= null){
+					%>
+							<td colspan="2"><%=request.getParameter("msg")%></td>
+					<%			
+							}
+					%>
+				</tr>
+				<tr>
+					<td>ID</td><!-- memberId는 지금 접속해있는 세션값(loginMemberId)으로, 세션 유효성 검사에서 받은 값을 출력 -->
+					<td><%=memberId%></td>
+				</tr>
+				<tr><!--  -->
+					<td>가입 날짜</td><!-- Member 클래스의 접근제한자가 private이기 때문에 getter/setter를 이용 -->
+					<td><%=member.getCreatedate()%></td>
+				</tr>
 	
-	<div class="container">
-		<table class="table table-bordered">
-			<tr>
-				<th colspan="2">회원정보 확인</th>
-			</tr>
-			<tr class="center"><!-- 오류 메세지 -->
-				<%
-					if(request.getParameter("msg")!= null){
-				%>
-						<td colspan="2"><%=request.getParameter("msg")%></td>
-				<%			
-						}
-				%>
-			</tr>
-			<tr>
-				<td>ID</td><!-- memberId는 지금 접속해있는 세션값(loginMemberId)으로, 세션 유효성 검사에서 받은 값을 출력 -->
-				<td><%=memberId%></td>
-			</tr>
-			<tr><!--  -->
-				<td>가입 날짜</td><!-- Member 클래스의 접근제한자가 private이기 때문에 getter/setter를 이용 -->
-				<td><%=member.getCreatedate()%></td>
-			</tr>
-
-			<tr>
-				<td colspan="2"><!-- 각각 Form으로 이동 -->
-					<a href="<%=request.getContextPath()%>/member/updatePwForm.jsp">비밀번호 변경</a>
-					<a href="<%=request.getContextPath()%>/member/deleteInformationForm.jsp">삭제</a>
-				</td>
-			</tr>
-		</table>
-	</div>	
+				<tr>
+					<td colspan="2"><!-- 각각 Form으로 이동 -->
+						<a href="<%=request.getContextPath()%>/member/updatePwForm.jsp"><button class="btn btn-outline-secondary">비밀번호 변경</button></a>
+						<a href="<%=request.getContextPath()%>/member/deleteInformationForm.jsp"><button class="btn btn-outline-secondary">삭제</button></a>
+					</td>
+				</tr>
+			</table>
+		</div>
+	  </div>
 	<div><!-- 하단 footer -->
 		<jsp:include page="/inc/copyright.jsp"></jsp:include>
 	</div>

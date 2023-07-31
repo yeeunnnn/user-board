@@ -26,13 +26,15 @@
 	<!-- Latest compiled JavaScript -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 	<style>
-	 	table, td {table-layout: fixed}
-	 	.center {text-align:center}
+	 	table, td {
+	 		table-layout: fixed;
+	 	}
+	 	.center {
+	 		text-align:center;
+	 	}
 	</style>
 </head>
 <body>
-	<!-- 헤드 -->
-	<div class="p-5 bg-primary text-center"></div>
 	<!-- 상단 메뉴바 -->
 	<div>
 		<jsp:include page="/inc/mainmenu.jsp"></jsp:include>

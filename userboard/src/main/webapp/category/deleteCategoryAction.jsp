@@ -7,6 +7,9 @@
 	final String RESET = "\u001B[0m";
 	final String CYAN = "\u001B[46m";
 	
+/* 인코딩 */
+	request.setCharacterEncoding("UTF-8");
+
 /* controller */
 	// ID 세션 값 유효성 검사
 	if(session.getAttribute("loginMemberId")==null){

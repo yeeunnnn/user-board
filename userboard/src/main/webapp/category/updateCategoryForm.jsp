@@ -34,17 +34,17 @@
 	<!-- Latest compiled JavaScript -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 	<style>
-		table, td {text-align:center; table-layout: fixed;}
+		table, td {
+			text-align:center;
+			table-layout: fixed;
+		}
 	</style>
 </head>
 <body>
-	<!-- 헤드 -->
-	<div class="p-5 bg-primary text-center"></div>
 	<div><!-- 상단 메뉴바 -->
 		<jsp:include page="/inc/mainmenu.jsp"></jsp:include>
 	</div>
-	
-	<div class="container">
+	  <div class="container">
 		<form action="./updateCategoryAction.jsp" method="post"><!-- 입력 받은 값을 Action으로 보냄 -->
 			<table class="table table-bordered">
 				<tr>
@@ -62,13 +62,13 @@
 				<tr>
 					<td>현재 카테고리 이름</td><!-- 기존 비밀번호는 name도 똑같이. -->
 					<td>
-						<input type="text" name="localName" value="<%=localName%>" readonly="readonly" class="center">
+						<input type="text" name="localName" value="<%=localName%>" readonly="readonly" class="center" class="form-control">
 					</td>
 				</tr>
 				<tr>
 					<td>새 카테고리 이름</td><!-- 새 비밀번호는 name 이름을 바꿔야 구분 가능. -->
 					<td>
-						<input type="text" name="newLocalName" class="center">
+						<input type="text" name="newLocalName" class="center" class="form-control">
 					</td>
 				</tr>
 				<tr>
@@ -76,11 +76,9 @@
 				</tr>
 			</table>
 		</form>
-	</div>
-		
+	  </div>
 	<div>
 		<jsp:include page="/inc/copyright.jsp"></jsp:include>
 	</div>
-	
 </body>
 </html>

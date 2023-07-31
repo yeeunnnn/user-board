@@ -24,8 +24,6 @@
 	</style>
 </head>
 <body>
-	<!-- 헤드 -->
-	<div class="p-5 bg-primary text-center"></div>
 	<!-- 상단 메뉴바 -->
 	<div>
 		<jsp:include page="/inc/mainmenu.jsp"></jsp:include>

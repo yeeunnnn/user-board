@@ -60,17 +60,16 @@
 	<style>
 		table, tr, td {text-align:center; table-layout: fixed;}
 		.red {color:#FF0000; text-decoration: none;}
+		h1, h2, h3, h4, h5 {
+			font-family: 'Days One', sans-serif;
+			}
 	</style>
 </head>
 <body>
-<!-- 헤드 -->
-	<div class="p-5 bg-primary text-center"></div>
 <!-- 메인메뉴(가로) -->
 	<div>
 		<jsp:include page="/inc/mainmenu.jsp"></jsp:include>
 	</div>
-	
-	<br>
 	
 	<div class="container">
 		<table class="table table-bordered table-sm">

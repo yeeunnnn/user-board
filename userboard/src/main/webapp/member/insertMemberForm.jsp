@@ -18,9 +18,6 @@
 	</style>
 </head>
 <body>
-	<!-- 헤드 -->
-	<div class="p-5 bg-primary text-center"></div>
-	
 	<!-- 상단 메뉴바 -->
 	<div>
 		<jsp:include page="/inc/mainmenu.jsp"></jsp:include>
@@ -45,11 +42,11 @@
 				</tr>
 				<tr>
 					<td>새로운 ID</td>
-					<td><input type="text" name="memberId"></td>
+					<td><input type="text" name="memberId" class="form-control"></td>
 				</tr>
 				<tr>
 					<td>새로운 PW</td>
-					<td><input type="text" name=memberPw></td>
+					<td><input type="text" name="memberPw" class="form-control"></td>
 				</tr>
 				<tr>
 					<td colspan="2"><button type="submit" class="btn btn-outline-secondary">입력</button></td>
