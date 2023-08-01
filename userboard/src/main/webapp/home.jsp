@@ -270,7 +270,7 @@
 			<tr>
 				<td><%=b.getLocalName()%></td>
 				<td>
-					<a class="deco" href="<%=request.getContextPath()%>/board/boardOne.jsp?boardNo=<%=b.getBoardNo()%>&currentPage=<%=currentPage%>">
+					<a class="deco" href="<%=request.getContextPath()%>/board/boardOne.jsp?boardNo=<%=b.getBoardNo()%>">
 						<%=b.getBoardTitle()%>
 					</a>
 				</td>
