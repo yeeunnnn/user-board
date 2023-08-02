@@ -45,10 +45,11 @@
 	int row = stmt.executeUpdate();
 	System.out.println(row+CYAN+"<--deleteInformationAction row"+RESET);
 	
-/* /Redirect */
+/* Redirect */
 	String msg = null;
 	if(row==1){//삭제에 성공했다면 성공 메세지 보내고, home으로 보내기.
 		msg = "delete";
+		session.invalidate(); //기존 세션을 지우고 갱신
 		response.sendRedirect(request.getContextPath()+"/home.jsp?msg="+msg);
 		return;
 	} else if(row==0){//실패했으면 실패 메세지
