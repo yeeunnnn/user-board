@@ -50,6 +50,15 @@
 			  	<li class="nav-item">
                   <a class="nav-link" href="<%=request.getContextPath()%>/member/informationForm.jsp">회원정보</a>
                 </li>
+                <%
+                	if(session.getAttribute("loginMemberId").equals("admin")){
+                %>
+                	<li class="nav-item">
+	                  <a class="nav-link" href="<%=request.getContextPath()%>/member/empListBySearch.jsp">직원정보</a>
+	                </li>
+                <%		
+                	}
+                %>
                 <li class="nav-item">
                   <a class="nav-link" href="<%=request.getContextPath()%>/member/logoutAction.jsp">로그아웃</a>
                 </li>

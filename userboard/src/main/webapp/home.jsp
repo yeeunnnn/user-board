@@ -314,11 +314,11 @@
 					<table class="table table-bordered">
 						<tr>
 							<td>아이디</td>
-							<td><input type="text" name="memberId" class="form-control"></td>
+							<td><input type="text" name="memberId" value="admin" class="form-control"></td><!-- 관리자:admin 일반:user1 -->
 						</tr>
 						<tr>
 							<td>패스워드</td>
-							<td><input type="password" name="memberPw" class="form-control"></td>
+							<td><input type="password" name="memberPw" value="1234" class="form-control"></td>
 						</tr>
 						<tr>
 							<td colspan="2"><button type="submit" class="btn btn-outline-warning">로그인</button></td>
