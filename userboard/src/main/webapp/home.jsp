@@ -155,6 +155,25 @@
 	
 	<!-- Latest compiled JavaScript -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+	<!-- JQuery -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+	<script>
+	    if (window.jQuery) {  
+	        // jQuery가 로드되었을 때 실행될 코드
+	        $(document).ready(function () {
+	            const urlParams = new URLSearchParams(window.location.search);
+	            const msg = urlParams.get('msg');
+	
+	            if (msg) {
+	                alert(msg);
+	            }
+	        });
+	    } else {
+	        // jQuery가 로드되지 않았을 때 실행될 코드
+	        console.log('jQuery is not loaded.');
+	    }
+		</script>
 	<style>
 		table, td {
 			text-align:center;
@@ -222,15 +241,6 @@
 <!--[시작] 상세 목록 boardList --------------------------------------------------------------->
 	<!-- 카테고리별 게시글 5개씩 -->
 	<div class="col-sm-8">
-		<div class="center"><!-- 오류/성공 메세지 -->
-			<%
-				if(request.getParameter("msg")!=null){
-			%>
-				<%=request.getParameter("msg")%>
-			<%
-				}
-			%>		
-		</div>
 			<!-- 로그인 했다면 게시글 추가 버튼 보이도록 -->
 			<%
 				if(session.getAttribute("loginMemberId")!=null){
@@ -245,8 +255,8 @@
 				<th>boardTitle</th>
 				<th>createdate</th>
 			</tr>
-			<!-- 나중에는 이런 태그를 사용
-					    <c:foreach var="b" items="boardList"> var를 쓰면 reflecttion API 작용해서 b가 어디에서 왔는지 파악함. ex. "사람"을 보고 그 사람이 "여자"인지 거꾸로 올라가 알아보는. 
+			<!-- 나중에는 EL, JSTL 태그를 사용
+					    <c:foreach var="b" items="boardList"> var를 쓰면 reflecttion API 작용. b가 어디에서 왔는지 파악.ex)"사람"을 보고 그 사람이 "여자"인지 거꾸로 올라가 알아보는.
 							<tr>
 								<td></td>
 								<td></td>
@@ -308,7 +318,7 @@
 			<!-- 로그인 폼 -->
 		<div class="col-sm-2">
 			<%
-				if(session.getAttribute("loginMemberId") == null) { // 로그인전이면 로그인폼 출력
+				if(session.getAttribute("loginMemberId") == null) { // 로그인 전이면 로그인폼 출력
 			%><!-- 로그인 할 경우 Action으로 넘겨주기 -->
 				<form action="<%=request.getContextPath()%>/member/loginAction.jsp" method="post">
 					<table class="table table-bordered">
