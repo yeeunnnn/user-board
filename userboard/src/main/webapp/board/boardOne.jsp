@@ -97,7 +97,7 @@
 	PreparedStatement commentListStmt = null;
 	ResultSet commentListRs = null;
 	//쿼리 생성
-	commentListSql = "SELECT comment_no commentNo, board_no boardNo, comment_content commentContent, member_id memberId, createdate, updatedate FROM COMMENT WHERE board_no = ? LIMIT ?, ?";
+	commentListSql = "SELECT comment_no commentNo, board_no boardNo, comment_content commentContent, member_id memberId, createdate, updatedate FROM comment WHERE board_no = ? LIMIT ?, ?";
 	commentListStmt = conn.prepareStatement(commentListSql); 
 	commentListStmt.setInt(1, boardNo);
 	commentListStmt.setInt(2, startRow);
